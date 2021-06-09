@@ -66,7 +66,8 @@ public final class JDK14LoggerAdapter extends LegacyAbstractLogger implements Lo
 	 * 
 	 * @return True if this Logger is enabled for level FINEST, false otherwise.
 	 */
-	public boolean isTraceEnabled() {
+	@Override
+    public boolean isTraceEnabled() {
 		return logger.isLoggable(Level.FINEST);
 	}
 
@@ -75,6 +76,7 @@ public final class JDK14LoggerAdapter extends LegacyAbstractLogger implements Lo
 	 * 
 	 * @return True if this Logger is enabled for level FINE, false otherwise.
 	 */
+	@Override
 	public boolean isDebugEnabled() {
 		return logger.isLoggable(Level.FINE);
 	}
@@ -84,6 +86,7 @@ public final class JDK14LoggerAdapter extends LegacyAbstractLogger implements Lo
 	 * 
 	 * @return True if this Logger is enabled for the INFO level, false otherwise.
 	 */
+	@Override
 	public boolean isInfoEnabled() {
 		return logger.isLoggable(Level.INFO);
 	}
@@ -94,6 +97,7 @@ public final class JDK14LoggerAdapter extends LegacyAbstractLogger implements Lo
 	 * @return True if this Logger is enabled for the WARNING level, false
 	 *         otherwise.
 	 */
+	@Override
 	public boolean isWarnEnabled() {
 		return logger.isLoggable(Level.WARNING);
 	}
@@ -103,6 +107,7 @@ public final class JDK14LoggerAdapter extends LegacyAbstractLogger implements Lo
 	 * 
 	 * @return True if this Logger is enabled for level SEVERE, false otherwise.
 	 */
+	@Override
 	public boolean isErrorEnabled() {
 		return logger.isLoggable(Level.SEVERE);
 	}

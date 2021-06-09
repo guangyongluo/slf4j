@@ -66,6 +66,7 @@ public class BasicMDCAdapter implements MDCAdapter {
      * @throws IllegalArgumentException
      *                 in case the "key" parameter is null
      */
+    @Override
     public void put(String key, String val) {
         if (key == null) {
             throw new IllegalArgumentException("key cannot be null");
@@ -81,6 +82,7 @@ public class BasicMDCAdapter implements MDCAdapter {
     /**
      * Get the context identified by the <code>key</code> parameter.
      */
+    @Override
     public String get(String key) {
         Map<String, String> map = inheritableThreadLocal.get();
         if ((map != null) && (key != null)) {
@@ -93,6 +95,7 @@ public class BasicMDCAdapter implements MDCAdapter {
     /**
      * Remove the the context identified by the <code>key</code> parameter.
      */
+    @Override
     public void remove(String key) {
         Map<String, String> map = inheritableThreadLocal.get();
         if (map != null) {
@@ -103,6 +106,7 @@ public class BasicMDCAdapter implements MDCAdapter {
     /**
      * Clear all entries in the MDC.
      */
+    @Override
     public void clear() {
         Map<String, String> map = inheritableThreadLocal.get();
         if (map != null) {
@@ -131,16 +135,18 @@ public class BasicMDCAdapter implements MDCAdapter {
      * Returned value may be null.
      *
      */
+    @Override
     public Map<String, String> getCopyOfContextMap() {
         Map<String, String> oldMap = inheritableThreadLocal.get();
         if (oldMap != null) {
-            return new HashMap<String, String>(oldMap);
+            return new HashMap<>(oldMap);
         } else {
             return null;
         }
     }
 
+    @Override
     public void setContextMap(Map<String, String> contextMap) {
-        inheritableThreadLocal.set(new HashMap<String, String>(contextMap));
+        inheritableThreadLocal.set(new HashMap<>(contextMap));
     }
 }

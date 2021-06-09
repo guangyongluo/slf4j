@@ -33,33 +33,40 @@ public class EventRecodingLogger extends LegacyAbstractLogger {
 		this.eventQueue = eventQueue;
 	}
 
+	@Override
 	public String getName() {
 		return name;
 	}
 
+	@Override
 	public boolean isTraceEnabled() {
 		return RECORD_ALL_EVENTS;
 	}
 
+	@Override
 	public boolean isDebugEnabled() {
 		return RECORD_ALL_EVENTS;
 	}
 
+	@Override
 	public boolean isInfoEnabled() {
 		return RECORD_ALL_EVENTS;
 	}
 
+	@Override
 	public boolean isWarnEnabled() {
 		return RECORD_ALL_EVENTS;
 	}
 
+	@Override
 	public boolean isErrorEnabled() {
 		return RECORD_ALL_EVENTS;
 	}
 
 	// WARNING: this method assumes that any throwable is properly extracted
+	@Override
 	protected void handleNormalizedLoggingCall(Level level, Marker marker, String msg, Object[] args,
-			Throwable throwable) {
+											   Throwable throwable) {
 		SubstituteLoggingEvent loggingEvent = new SubstituteLoggingEvent();
 		loggingEvent.setTimeStamp(System.currentTimeMillis());
 		loggingEvent.setLevel(level);

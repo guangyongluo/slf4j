@@ -1,7 +1,7 @@
 /**
  * Copyright (c) 2004-2011 QOS.ch
  * All rights reserved.
- *
+ * <p>
  * Permission is hereby granted, free  of charge, to any person obtaining
  * a  copy  of this  software  and  associated  documentation files  (the
  * "Software"), to  deal in  the Software without  restriction, including
@@ -9,10 +9,10 @@
  * distribute,  sublicense, and/or sell  copies of  the Software,  and to
  * permit persons to whom the Software  is furnished to do so, subject to
  * the following conditions:
- *
+ * <p>
  * The  above  copyright  notice  and  this permission  notice  shall  be
  * included in all copies or substantial portions of the Software.
- *
+ * <p>
  * THE  SOFTWARE IS  PROVIDED  "AS  IS", WITHOUT  WARRANTY  OF ANY  KIND,
  * EXPRESS OR  IMPLIED, INCLUDING  BUT NOT LIMITED  TO THE  WARRANTIES OF
  * MERCHANTABILITY,    FITNESS    FOR    A   PARTICULAR    PURPOSE    AND
@@ -20,7 +20,6 @@
  * LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
  * OF CONTRACT, TORT OR OTHERWISE,  ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- *
  */
 package org.slf4j;
 
@@ -48,18 +47,18 @@ import org.slf4j.spi.SLF4JServiceProvider;
  * various logging APIs, most notably for log4j, logback and JDK 1.4 logging.
  * Other implementations such as {@link org.slf4j.nop.NOPLogger NOPLogger} and
  * {@link org.slf4j.simple.SimpleLogger SimpleLogger} are also supported.
- * 
+ *
  * <p><code>LoggerFactory</code> is essentially a wrapper around an
  * {@link ILoggerFactory} instance bound with <code>LoggerFactory</code> at
  * compile time.
- * 
+ *
  * <p>
  * Please note that all methods in <code>LoggerFactory</code> are static.
- * 
+ *
  * @author Alexander Dorokhine
  * @author Robert Elliot
  * @author Ceki G&uuml;lc&uuml;
- * 
+ *
  */
 public final class LoggerFactory {
 
@@ -67,7 +66,7 @@ public final class LoggerFactory {
 
     static final String NO_PROVIDERS_URL = CODES_PREFIX + "#noProviders";
     static final String IGNORED_BINDINGS_URL = CODES_PREFIX + "#ignoredBindings";
-    
+
     static final String NO_STATICLOGGERBINDER_URL = CODES_PREFIX + "#StaticLoggerBinder";
     static final String MULTIPLE_BINDINGS_URL = CODES_PREFIX + "#multiple_bindings";
     static final String NULL_LF_URL = CODES_PREFIX + "#null_LF";
@@ -78,7 +77,7 @@ public final class LoggerFactory {
 
     static final String UNSUCCESSFUL_INIT_URL = CODES_PREFIX + "#unsuccessfulInit";
     static final String UNSUCCESSFUL_INIT_MSG = "org.slf4j.LoggerFactory in failed state. Original exception was thrown EARLIER. See also "
-                    + UNSUCCESSFUL_INIT_URL;
+            + UNSUCCESSFUL_INIT_URL;
 
     static final int UNINITIALIZED = 0;
     static final int ONGOING_INITIALIZATION = 1;
@@ -101,7 +100,7 @@ public final class LoggerFactory {
     private static List<SLF4JServiceProvider> findServiceProviders() {
         ServiceLoader<SLF4JServiceProvider> serviceLoader = ServiceLoader.load(SLF4JServiceProvider.class);
         List<SLF4JServiceProvider> providerList = new ArrayList<SLF4JServiceProvider>();
-        for (SLF4JServiceProvider provider : serviceLoader) {
+        for(SLF4JServiceProvider provider : serviceLoader) {
             providerList.add(provider);
         }
         return providerList;
@@ -114,7 +113,7 @@ public final class LoggerFactory {
      * <p>
      * It is assumed that all versions in the 1.6 are mutually compatible.
      */
-    static private final String[] API_COMPATIBILITY_LIST = new String[] { "1.8", "1.7" };
+    static private final String[] API_COMPATIBILITY_LIST = new String[]{"1.8", "1.7"};
 
     // private constructor prevents instantiation
     private LoggerFactory() {
@@ -137,7 +136,7 @@ public final class LoggerFactory {
 
     private final static void performInitialization() {
         bind();
-        if (INITIALIZATION_STATE == SUCCESSFUL_INITIALIZATION) {
+        if(INITIALIZATION_STATE == SUCCESSFUL_INITIALIZATION) {
             versionSanityCheck();
         }
     }
@@ -146,11 +145,11 @@ public final class LoggerFactory {
         try {
             List<SLF4JServiceProvider> providersList = findServiceProviders();
             reportMultipleBindingAmbiguity(providersList);
-            if (providersList != null && !providersList.isEmpty()) {
-            	PROVIDER = providersList.get(0);
-            	// SLF4JServiceProvider.initialize() is intended to be called here and nowhere else.
-            	PROVIDER.initialize();
-            	INITIALIZATION_STATE = SUCCESSFUL_INITIALIZATION;
+            if(providersList != null && !providersList.isEmpty()) {
+                PROVIDER = providersList.get(0);
+                // SLF4JServiceProvider.initialize() is intended to be called here and nowhere else.
+                PROVIDER.initialize();
+                INITIALIZATION_STATE = SUCCESSFUL_INITIALIZATION;
                 reportActualBinding(providersList);
             } else {
                 INITIALIZATION_STATE = NOP_FALLBACK_INITIALIZATION;
@@ -169,15 +168,15 @@ public final class LoggerFactory {
     }
 
     private static void reportIgnoredStaticLoggerBinders(Set<URL> staticLoggerBinderPathSet) {
-        if (staticLoggerBinderPathSet.isEmpty()) {
+        if(staticLoggerBinderPathSet.isEmpty()) {
             return;
         }
         Util.report("Class path contains SLF4J bindings targeting slf4j-api versions prior to 1.8.");
-        for (URL path : staticLoggerBinderPathSet) {
+        for(URL path : staticLoggerBinderPathSet) {
             Util.report("Ignoring binding found at [" + path + "]");
         }
         Util.report("See " + IGNORED_BINDINGS_URL + " for an explanation.");
-   
+
 
     }
 
@@ -193,12 +192,12 @@ public final class LoggerFactory {
         try {
             ClassLoader loggerFactoryClassLoader = LoggerFactory.class.getClassLoader();
             Enumeration<URL> paths;
-            if (loggerFactoryClassLoader == null) {
+            if(loggerFactoryClassLoader == null) {
                 paths = ClassLoader.getSystemResources(STATIC_LOGGER_BINDER_PATH);
             } else {
                 paths = loggerFactoryClassLoader.getResources(STATIC_LOGGER_BINDER_PATH);
             }
-            while (paths.hasMoreElements()) {
+            while(paths.hasMoreElements()) {
                 URL path = paths.nextElement();
                 staticLoggerBinderPathSet.add(path);
             }
@@ -208,17 +207,17 @@ public final class LoggerFactory {
         return staticLoggerBinderPathSet;
     }
 
-	private static void postBindCleanUp() {
-		fixSubstituteLoggers();
-		replayEvents();
-		// release all resources in SUBST_FACTORY
-		SUBST_PROVIDER.getSubstituteLoggerFactory().clear();
-	}
+    private static void postBindCleanUp() {
+        fixSubstituteLoggers();
+        replayEvents();
+        // release all resources in SUBST_FACTORY
+        SUBST_PROVIDER.getSubstituteLoggerFactory().clear();
+    }
 
     private static void fixSubstituteLoggers() {
-        synchronized (SUBST_PROVIDER) {
+        synchronized(SUBST_PROVIDER) {
             SUBST_PROVIDER.getSubstituteLoggerFactory().postInitialization();
-            for (SubstituteLogger substLogger : SUBST_PROVIDER.getSubstituteLoggerFactory().getLoggers()) {
+            for(SubstituteLogger substLogger : SUBST_PROVIDER.getSubstituteLoggerFactory().getLoggers()) {
                 Logger logger = getLogger(substLogger.getName());
                 substLogger.setDelegate(logger);
             }
@@ -237,23 +236,25 @@ public final class LoggerFactory {
         int count = 0;
         final int maxDrain = 128;
         List<SubstituteLoggingEvent> eventList = new ArrayList<SubstituteLoggingEvent>(maxDrain);
-        while (true) {
+        while(true) {
             int numDrained = queue.drainTo(eventList, maxDrain);
-            if (numDrained == 0)
+            if(numDrained == 0) {
                 break;
-            for (SubstituteLoggingEvent event : eventList) {
+            }
+            for(SubstituteLoggingEvent event : eventList) {
                 replaySingleEvent(event);
-                if (count++ == 0)
+                if(count++ == 0) {
                     emitReplayOrSubstituionWarning(event, queueSize);
+                }
             }
             eventList.clear();
         }
     }
 
     private static void emitReplayOrSubstituionWarning(SubstituteLoggingEvent event, int queueSize) {
-        if (event.getLogger().isDelegateEventAware()) {
+        if(event.getLogger().isDelegateEventAware()) {
             emitReplayWarning(queueSize);
-        } else if (event.getLogger().isDelegateNOP()) {
+        } else if(event.getLogger().isDelegateNOP()) {
             // nothing to do
         } else {
             emitSubstitutionWarning();
@@ -261,18 +262,19 @@ public final class LoggerFactory {
     }
 
     private static void replaySingleEvent(SubstituteLoggingEvent event) {
-        if (event == null)
+        if(event == null) {
             return;
+        }
 
         SubstituteLogger substLogger = event.getLogger();
         String loggerName = substLogger.getName();
-        if (substLogger.isDelegateNull()) {
+        if(substLogger.isDelegateNull()) {
             throw new IllegalStateException("Delegate logger cannot be null at this state.");
         }
 
-        if (substLogger.isDelegateNOP()) {
+        if(substLogger.isDelegateNOP()) {
             // nothing to do
-        } else if (substLogger.isDelegateEventAware()) {
+        } else if(substLogger.isDelegateEventAware()) {
             substLogger.log(event);
         } else {
             Util.report(loggerName);
@@ -298,14 +300,14 @@ public final class LoggerFactory {
             String requested = PROVIDER.getRequesteApiVersion();
 
             boolean match = false;
-            for (String aAPI_COMPATIBILITY_LIST : API_COMPATIBILITY_LIST) {
-                if (requested.startsWith(aAPI_COMPATIBILITY_LIST)) {
+            for(String aAPI_COMPATIBILITY_LIST : API_COMPATIBILITY_LIST) {
+                if(requested.startsWith(aAPI_COMPATIBILITY_LIST)) {
                     match = true;
                 }
             }
-            if (!match) {
+            if(!match) {
                 Util.report("The requested version " + requested + " by your slf4j binding is not compatible with "
-                                + Arrays.asList(API_COMPATIBILITY_LIST).toString());
+                                    + Arrays.asList(API_COMPATIBILITY_LIST).toString());
                 Util.report("See " + VERSION_MISMATCH + " for further details.");
             }
         } catch (java.lang.NoSuchFieldError nsfe) {
@@ -326,12 +328,12 @@ public final class LoggerFactory {
     /**
      * Prints a warning message on the console if multiple bindings were found
      * on the class path. No reporting is done otherwise.
-     * 
+     *
      */
     private static void reportMultipleBindingAmbiguity(List<SLF4JServiceProvider> providerList) {
-        if (isAmbiguousProviderList(providerList)) {
+        if(isAmbiguousProviderList(providerList)) {
             Util.report("Class path contains multiple SLF4J providers.");
-            for (SLF4JServiceProvider provider : providerList) {
+            for(SLF4JServiceProvider provider : providerList) {
                 Util.report("Found provider [" + provider + "]");
             }
             Util.report("See " + MULTIPLE_BINDINGS_URL + " for an explanation.");
@@ -340,7 +342,7 @@ public final class LoggerFactory {
 
     private static void reportActualBinding(List<SLF4JServiceProvider> providerList) {
         // binderPathSet can be null under Android
-        if (!providerList.isEmpty() && isAmbiguousProviderList(providerList)) {
+        if(!providerList.isEmpty() && isAmbiguousProviderList(providerList)) {
             Util.report("Actual provider is of type [" + providerList.get(0) + "]");
         }
     }
@@ -348,7 +350,7 @@ public final class LoggerFactory {
     /**
      * Return a logger named according to the name parameter using the
      * statically bound {@link ILoggerFactory} instance.
-     * 
+     *
      * @param name
      *            The name of the logger.
      * @return logger
@@ -361,7 +363,7 @@ public final class LoggerFactory {
     /**
      * Return a logger named corresponding to the class passed as parameter,
      * using the statically bound {@link ILoggerFactory} instance.
-     * 
+     *
      * <p>
      * In case the the <code>clazz</code> parameter differs from the name of the
      * caller as computed internally by SLF4J, a logger name mismatch warning
@@ -369,23 +371,23 @@ public final class LoggerFactory {
      * <code>slf4j.detectLoggerNameMismatch</code> system property is set to
      * true. By default, this property is not set and no warnings will be
      * printed even in case of a logger name mismatch.
-     * 
+     *
      * @param clazz
      *            the returned logger will be named after clazz
      * @return logger
-     * 
-     * 
+     *
+     *
      * @see <a
      *      href="http://www.slf4j.org/codes.html#loggerNameMismatch">Detected
      *      logger name mismatch</a>
      */
     public static Logger getLogger(Class<?> clazz) {
         Logger logger = getLogger(clazz.getName());
-        if (DETECT_LOGGER_NAME_MISMATCH) {
+        if(DETECT_LOGGER_NAME_MISMATCH) {
             Class<?> autoComputedCallingClass = Util.getCallingClass();
-            if (autoComputedCallingClass != null && nonMatchingClasses(clazz, autoComputedCallingClass)) {
+            if(autoComputedCallingClass != null && nonMatchingClasses(clazz, autoComputedCallingClass)) {
                 Util.report(String.format("Detected logger name mismatch. Given name: \"%s\"; computed name: \"%s\".", logger.getName(),
-                                autoComputedCallingClass.getName()));
+                                          autoComputedCallingClass.getName()));
                 Util.report("See " + LOGGER_NAME_MISMATCH_URL + " for an explanation");
             }
         }
@@ -401,7 +403,7 @@ public final class LoggerFactory {
      * <p>
      * <p>
      * ILoggerFactory instance is bound with this class at compile time.
-     * 
+     *
      * @return the ILoggerFactory instance in use
      */
     public static ILoggerFactory getILoggerFactory() {
@@ -410,30 +412,29 @@ public final class LoggerFactory {
 
     /**
      * Return the {@link SLF4JServiceProvider} in use.
-
      * @return provider in use
      * @since 1.8.0
      */
     static SLF4JServiceProvider getProvider() {
-        if (INITIALIZATION_STATE == UNINITIALIZED) {
-            synchronized (LoggerFactory.class) {
-                if (INITIALIZATION_STATE == UNINITIALIZED) {
+        if(INITIALIZATION_STATE == UNINITIALIZED) {
+            synchronized(LoggerFactory.class) {
+                if(INITIALIZATION_STATE == UNINITIALIZED) {
                     INITIALIZATION_STATE = ONGOING_INITIALIZATION;
                     performInitialization();
                 }
             }
         }
-        switch (INITIALIZATION_STATE) {
-        case SUCCESSFUL_INITIALIZATION:
-            return PROVIDER;
-        case NOP_FALLBACK_INITIALIZATION:
-            return NOP_FALLBACK_FACTORY;
-        case FAILED_INITIALIZATION:
-            throw new IllegalStateException(UNSUCCESSFUL_INIT_MSG);
-        case ONGOING_INITIALIZATION:
-            // support re-entrant behavior.
-            // See also http://jira.qos.ch/browse/SLF4J-97
-            return SUBST_PROVIDER;
+        switch(INITIALIZATION_STATE) {
+            case SUCCESSFUL_INITIALIZATION:
+                return PROVIDER;
+            case NOP_FALLBACK_INITIALIZATION:
+                return NOP_FALLBACK_FACTORY;
+            case FAILED_INITIALIZATION:
+                throw new IllegalStateException(UNSUCCESSFUL_INIT_MSG);
+            case ONGOING_INITIALIZATION:
+                // support re-entrant behavior.
+                // See also http://jira.qos.ch/browse/SLF4J-97
+                return SUBST_PROVIDER;
         }
         throw new IllegalStateException("Unreachable code");
     }

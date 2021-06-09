@@ -51,6 +51,7 @@ public class NOPLogger extends MarkerIgnoringBase {
     /**
      * Always returns the string value "NOP".
      */
+    @Override
     public String getName() {
         return "NOP";
     }
@@ -59,31 +60,37 @@ public class NOPLogger extends MarkerIgnoringBase {
      * Always returns false.
      * @return always false
      */
+    @Override
     final public boolean isTraceEnabled() {
         return false;
     }
 
     /** A NOP implementation. */
+    @Override
     final public void trace(String msg) {
         // NOP
     }
 
     /** A NOP implementation.  */
+    @Override
     final public void trace(String format, Object arg) {
         // NOP
     }
 
     /** A NOP implementation.  */
+    @Override
     public final void trace(String format, Object arg1, Object arg2) {
         // NOP
     }
 
     /** A NOP implementation.  */
+    @Override
     public final void trace(String format, Object... argArray) {
         // NOP
     }
 
     /** A NOP implementation. */
+    @Override
     final public void trace(String msg, Throwable t) {
         // NOP
     }
@@ -92,31 +99,37 @@ public class NOPLogger extends MarkerIgnoringBase {
      * Always returns false.
      * @return always false
      */
+    @Override
     final public boolean isDebugEnabled() {
         return false;
     }
 
     /** A NOP implementation. */
+    @Override
     final public void debug(String msg) {
         // NOP
     }
 
     /** A NOP implementation.  */
+    @Override
     final public void debug(String format, Object arg) {
         // NOP
     }
 
     /** A NOP implementation.  */
+    @Override
     public final void debug(String format, Object arg1, Object arg2) {
         // NOP
     }
 
     /** A NOP implementation.  */
+    @Override
     public final void debug(String format, Object... argArray) {
         // NOP
     }
 
     /** A NOP implementation. */
+    @Override
     final public void debug(String msg, Throwable t) {
         // NOP
     }
@@ -125,32 +138,38 @@ public class NOPLogger extends MarkerIgnoringBase {
      * Always returns false.
      * @return always false
      */
+    @Override
     final public boolean isInfoEnabled() {
         // NOP
         return false;
     }
 
     /** A NOP implementation. */
+    @Override
     final public void info(String msg) {
         // NOP
     }
 
     /** A NOP implementation. */
+    @Override
     final public void info(String format, Object arg1) {
         // NOP
     }
 
     /** A NOP implementation. */
+    @Override
     final public void info(String format, Object arg1, Object arg2) {
         // NOP
     }
 
     /** A NOP implementation.  */
+    @Override
     public final void info(String format, Object... argArray) {
         // NOP
     }
 
     /** A NOP implementation. */
+    @Override
     final public void info(String msg, Throwable t) {
         // NOP
     }
@@ -159,41 +178,49 @@ public class NOPLogger extends MarkerIgnoringBase {
      * Always returns false.
      * @return always false
      */
+    @Override
     final public boolean isWarnEnabled() {
         return false;
     }
 
     /** A NOP implementation. */
+    @Override
     final public void warn(String msg) {
         // NOP
     }
 
     /** A NOP implementation. */
+    @Override
     final public void warn(String format, Object arg1) {
         // NOP
     }
 
     /** A NOP implementation. */
+    @Override
     final public void warn(String format, Object arg1, Object arg2) {
         // NOP
     }
 
     /** A NOP implementation.  */
+    @Override
     public final void warn(String format, Object... argArray) {
         // NOP
     }
 
     /** A NOP implementation. */
+    @Override
     final public void warn(String msg, Throwable t) {
         // NOP
     }
 
     /** A NOP implementation. */
+    @Override
     final public boolean isErrorEnabled() {
         return false;
     }
 
     /** A NOP implementation. */
+    @Override
     final public void error(String msg) {
         // NOP
     }
@@ -204,6 +231,7 @@ public class NOPLogger extends MarkerIgnoringBase {
     }
 
     /** A NOP implementation. */
+    @Override
     final public void error(String format, Object arg1, Object arg2) {
         // NOP
     }

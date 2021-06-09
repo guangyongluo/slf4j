@@ -37,18 +37,22 @@ public class Log4j12ServiceProvider implements SLF4JServiceProvider {
         mdcAdapter = new Log4jMDCAdapter();
     }
     
+    @Override
     public ILoggerFactory getLoggerFactory() {
         return loggerFactory;
     }
 
+    @Override
     public IMarkerFactory getMarkerFactory() {
         return markerFactory;
     }
 
+    @Override
     public MDCAdapter getMDCAdapter() {
         return mdcAdapter;
     }
 
+    @Override
     public String getRequesteApiVersion() {
         return REQUESTED_API_VERSION;
     }

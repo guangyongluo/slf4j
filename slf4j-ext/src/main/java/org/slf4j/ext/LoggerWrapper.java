@@ -65,6 +65,7 @@ public class LoggerWrapper implements Logger {
     /**
      * Delegate to the appropriate method of the underlying logger.
      */
+    @Override
     public boolean isTraceEnabled() {
         return logger.isTraceEnabled();
     }
@@ -72,6 +73,7 @@ public class LoggerWrapper implements Logger {
     /**
      * Delegate to the appropriate method of the underlying logger.
      */
+    @Override
     public boolean isTraceEnabled(Marker marker) {
         return logger.isTraceEnabled(marker);
     }
@@ -79,6 +81,7 @@ public class LoggerWrapper implements Logger {
     /**
      * Delegate to the appropriate method of the underlying logger.
      */
+    @Override
     public void trace(String msg) {
         if (!logger.isTraceEnabled())
             return;
@@ -93,6 +96,7 @@ public class LoggerWrapper implements Logger {
     /**
      * Delegate to the appropriate method of the underlying logger.
      */
+    @Override
     public void trace(String format, Object arg) {
         if (!logger.isTraceEnabled())
             return;
@@ -108,6 +112,7 @@ public class LoggerWrapper implements Logger {
     /**
      * Delegate to the appropriate method of the underlying logger.
      */
+    @Override
     public void trace(String format, Object arg1, Object arg2) {
         if (!logger.isTraceEnabled())
             return;
@@ -123,6 +128,7 @@ public class LoggerWrapper implements Logger {
     /**
      * Delegate to the appropriate method of the underlying logger.
      */
+    @Override
     public void trace(String format, Object... args) {
         if (!logger.isTraceEnabled())
             return;
@@ -138,6 +144,7 @@ public class LoggerWrapper implements Logger {
     /**
      * Delegate to the appropriate method of the underlying logger.
      */
+    @Override
     public void trace(String msg, Throwable t) {
         if (!logger.isTraceEnabled())
             return;
@@ -152,6 +159,7 @@ public class LoggerWrapper implements Logger {
     /**
      * Delegate to the appropriate method of the underlying logger.
      */
+    @Override
     public void trace(Marker marker, String msg) {
         if (!logger.isTraceEnabled(marker))
             return;
@@ -165,6 +173,7 @@ public class LoggerWrapper implements Logger {
     /**
      * Delegate to the appropriate method of the underlying logger.
      */
+    @Override
     public void trace(Marker marker, String format, Object arg) {
         if (!logger.isTraceEnabled(marker))
             return;
@@ -179,6 +188,7 @@ public class LoggerWrapper implements Logger {
     /**
      * Delegate to the appropriate method of the underlying logger.
      */
+    @Override
     public void trace(Marker marker, String format, Object arg1, Object arg2) {
         if (!logger.isTraceEnabled(marker))
             return;
@@ -193,6 +203,7 @@ public class LoggerWrapper implements Logger {
     /**
      * Delegate to the appropriate method of the underlying logger.
      */
+    @Override
     public void trace(Marker marker, String format, Object... args) {
         if (!logger.isTraceEnabled(marker))
             return;
@@ -207,6 +218,7 @@ public class LoggerWrapper implements Logger {
     /**
      * Delegate to the appropriate method of the underlying logger.
      */
+    @Override
     public void trace(Marker marker, String msg, Throwable t) {
         if (!logger.isTraceEnabled(marker))
             return;
@@ -220,6 +232,7 @@ public class LoggerWrapper implements Logger {
     /**
      * Delegate to the appropriate method of the underlying logger.
      */
+    @Override
     public boolean isDebugEnabled() {
         return logger.isDebugEnabled();
     }
@@ -227,6 +240,7 @@ public class LoggerWrapper implements Logger {
     /**
      * Delegate to the appropriate method of the underlying logger.
      */
+    @Override
     public boolean isDebugEnabled(Marker marker) {
         return logger.isDebugEnabled(marker);
     }
@@ -234,6 +248,7 @@ public class LoggerWrapper implements Logger {
     /**
      * Delegate to the appropriate method of the underlying logger.
      */
+    @Override
     public void debug(String msg) {
         if (!logger.isDebugEnabled())
             return;
@@ -248,6 +263,7 @@ public class LoggerWrapper implements Logger {
     /**
      * Delegate to the appropriate method of the underlying logger.
      */
+    @Override
     public void debug(String format, Object arg) {
         if (!logger.isDebugEnabled())
             return;
@@ -263,6 +279,7 @@ public class LoggerWrapper implements Logger {
     /**
      * Delegate to the appropriate method of the underlying logger.
      */
+    @Override
     public void debug(String format, Object arg1, Object arg2) {
         if (!logger.isDebugEnabled())
             return;
@@ -278,6 +295,7 @@ public class LoggerWrapper implements Logger {
     /**
      * Delegate to the appropriate method of the underlying logger.
      */
+    @Override
     public void debug(String format, Object... argArray) {
         if (!logger.isDebugEnabled())
             return;
@@ -293,6 +311,7 @@ public class LoggerWrapper implements Logger {
     /**
      * Delegate to the appropriate method of the underlying logger.
      */
+    @Override
     public void debug(String msg, Throwable t) {
         if (!logger.isDebugEnabled())
             return;
@@ -307,6 +326,7 @@ public class LoggerWrapper implements Logger {
     /**
      * Delegate to the appropriate method of the underlying logger.
      */
+    @Override
     public void debug(Marker marker, String msg) {
         if (!logger.isDebugEnabled(marker))
             return;
@@ -320,6 +340,7 @@ public class LoggerWrapper implements Logger {
     /**
      * Delegate to the appropriate method of the underlying logger.
      */
+    @Override
     public void debug(Marker marker, String format, Object arg) {
         if (!logger.isDebugEnabled(marker))
             return;
@@ -334,6 +355,7 @@ public class LoggerWrapper implements Logger {
     /**
      * Delegate to the appropriate method of the underlying logger.
      */
+    @Override
     public void debug(Marker marker, String format, Object arg1, Object arg2) {
         if (!logger.isDebugEnabled(marker))
             return;
@@ -348,6 +370,7 @@ public class LoggerWrapper implements Logger {
     /**
      * Delegate to the appropriate method of the underlying logger.
      */
+    @Override
     public void debug(Marker marker, String format, Object... argArray) {
         if (!logger.isDebugEnabled(marker))
             return;
@@ -363,6 +386,7 @@ public class LoggerWrapper implements Logger {
     /**
      * Delegate to the appropriate method of the underlying logger.
      */
+    @Override
     public void debug(Marker marker, String msg, Throwable t) {
         if (!logger.isDebugEnabled(marker))
             return;
@@ -376,6 +400,7 @@ public class LoggerWrapper implements Logger {
     /**
      * Delegate to the appropriate method of the underlying logger.
      */
+    @Override
     public boolean isInfoEnabled() {
         return logger.isInfoEnabled();
     }
@@ -383,6 +408,7 @@ public class LoggerWrapper implements Logger {
     /**
      * Delegate to the appropriate method of the underlying logger.
      */
+    @Override
     public boolean isInfoEnabled(Marker marker) {
         return logger.isInfoEnabled(marker);
     }
@@ -390,6 +416,7 @@ public class LoggerWrapper implements Logger {
     /**
      * Delegate to the appropriate method of the underlying logger.
      */
+    @Override
     public void info(String msg) {
         if (!logger.isInfoEnabled())
             return;
@@ -404,6 +431,7 @@ public class LoggerWrapper implements Logger {
     /**
      * Delegate to the appropriate method of the underlying logger.
      */
+    @Override
     public void info(String format, Object arg) {
         if (!logger.isInfoEnabled())
             return;
@@ -419,6 +447,7 @@ public class LoggerWrapper implements Logger {
     /**
      * Delegate to the appropriate method of the underlying logger.
      */
+    @Override
     public void info(String format, Object arg1, Object arg2) {
         if (!logger.isInfoEnabled())
             return;
@@ -434,6 +463,7 @@ public class LoggerWrapper implements Logger {
     /**
      * Delegate to the appropriate method of the underlying logger.
      */
+    @Override
     public void info(String format, Object... args) {
         if (!logger.isInfoEnabled())
             return;
@@ -449,6 +479,7 @@ public class LoggerWrapper implements Logger {
     /**
      * Delegate to the appropriate method of the underlying logger.
      */
+    @Override
     public void info(String msg, Throwable t) {
         if (!logger.isInfoEnabled())
             return;
@@ -463,6 +494,7 @@ public class LoggerWrapper implements Logger {
     /**
      * Delegate to the appropriate method of the underlying logger.
      */
+    @Override
     public void info(Marker marker, String msg) {
         if (!logger.isInfoEnabled(marker))
             return;
@@ -476,6 +508,7 @@ public class LoggerWrapper implements Logger {
     /**
      * Delegate to the appropriate method of the underlying logger.
      */
+    @Override
     public void info(Marker marker, String format, Object arg) {
         if (!logger.isInfoEnabled(marker))
             return;
@@ -490,6 +523,7 @@ public class LoggerWrapper implements Logger {
     /**
      * Delegate to the appropriate method of the underlying logger.
      */
+    @Override
     public void info(Marker marker, String format, Object arg1, Object arg2) {
         if (!logger.isInfoEnabled(marker))
             return;
@@ -504,6 +538,7 @@ public class LoggerWrapper implements Logger {
     /**
      * Delegate to the appropriate method of the underlying logger.
      */
+    @Override
     public void info(Marker marker, String format, Object... args) {
         if (!logger.isInfoEnabled(marker))
             return;
@@ -518,6 +553,7 @@ public class LoggerWrapper implements Logger {
     /**
      * Delegate to the appropriate method of the underlying logger.
      */
+    @Override
     public void info(Marker marker, String msg, Throwable t) {
         if (!logger.isInfoEnabled(marker))
             return;
@@ -528,6 +564,7 @@ public class LoggerWrapper implements Logger {
         }
     }
 
+    @Override
     public boolean isWarnEnabled() {
         return logger.isWarnEnabled();
     }
@@ -535,6 +572,7 @@ public class LoggerWrapper implements Logger {
     /**
      * Delegate to the appropriate method of the underlying logger.
      */
+    @Override
     public boolean isWarnEnabled(Marker marker) {
         return logger.isWarnEnabled(marker);
     }
@@ -542,6 +580,7 @@ public class LoggerWrapper implements Logger {
     /**
      * Delegate to the appropriate method of the underlying logger.
      */
+    @Override
     public void warn(String msg) {
         if (!logger.isWarnEnabled())
             return;
@@ -556,6 +595,7 @@ public class LoggerWrapper implements Logger {
     /**
      * Delegate to the appropriate method of the underlying logger.
      */
+    @Override
     public void warn(String format, Object arg) {
         if (!logger.isWarnEnabled())
             return;
@@ -571,6 +611,7 @@ public class LoggerWrapper implements Logger {
     /**
      * Delegate to the appropriate method of the underlying logger.
      */
+    @Override
     public void warn(String format, Object arg1, Object arg2) {
         if (!logger.isWarnEnabled())
             return;
@@ -586,6 +627,7 @@ public class LoggerWrapper implements Logger {
     /**
      * Delegate to the appropriate method of the underlying logger.
      */
+    @Override
     public void warn(String format, Object... args) {
         if (!logger.isWarnEnabled())
             return;
@@ -601,6 +643,7 @@ public class LoggerWrapper implements Logger {
     /**
      * Delegate to the appropriate method of the underlying logger.
      */
+    @Override
     public void warn(String msg, Throwable t) {
         if (!logger.isWarnEnabled())
             return;
@@ -615,6 +658,7 @@ public class LoggerWrapper implements Logger {
     /**
      * Delegate to the appropriate method of the underlying logger.
      */
+    @Override
     public void warn(Marker marker, String msg) {
         if (!logger.isWarnEnabled(marker))
             return;
@@ -628,6 +672,7 @@ public class LoggerWrapper implements Logger {
     /**
      * Delegate to the appropriate method of the underlying logger.
      */
+    @Override
     public void warn(Marker marker, String format, Object arg) {
         if (!logger.isWarnEnabled(marker))
             return;
@@ -642,6 +687,7 @@ public class LoggerWrapper implements Logger {
     /**
      * Delegate to the appropriate method of the underlying logger.
      */
+    @Override
     public void warn(Marker marker, String format, Object arg1, Object arg2) {
         if (!logger.isWarnEnabled(marker))
             return;
@@ -656,6 +702,7 @@ public class LoggerWrapper implements Logger {
     /**
      * Delegate to the appropriate method of the underlying logger.
      */
+    @Override
     public void warn(Marker marker, String format, Object... args) {
         if (!logger.isWarnEnabled(marker))
             return;
@@ -670,6 +717,7 @@ public class LoggerWrapper implements Logger {
     /**
      * Delegate to the appropriate method of the underlying logger.
      */
+    @Override
     public void warn(Marker marker, String msg, Throwable t) {
         if (!logger.isWarnEnabled(marker))
             return;
@@ -683,6 +731,7 @@ public class LoggerWrapper implements Logger {
     /**
      * Delegate to the appropriate method of the underlying logger.
      */
+    @Override
     public boolean isErrorEnabled() {
         return logger.isErrorEnabled();
     }
@@ -690,6 +739,7 @@ public class LoggerWrapper implements Logger {
     /**
      * Delegate to the appropriate method of the underlying logger.
      */
+    @Override
     public boolean isErrorEnabled(Marker marker) {
         return logger.isErrorEnabled(marker);
     }
@@ -697,6 +747,7 @@ public class LoggerWrapper implements Logger {
     /**
      * Delegate to the appropriate method of the underlying logger.
      */
+    @Override
     public void error(String msg) {
         if (!logger.isErrorEnabled())
             return;
@@ -726,6 +777,7 @@ public class LoggerWrapper implements Logger {
     /**
      * Delegate to the appropriate method of the underlying logger.
      */
+    @Override
     public void error(String format, Object arg1, Object arg2) {
         if (!logger.isErrorEnabled())
             return;
@@ -783,6 +835,7 @@ public class LoggerWrapper implements Logger {
     /**
      * Delegate to the appropriate method of the underlying logger.
      */
+    @Override
     public void error(Marker marker, String format, Object arg) {
         if (!logger.isErrorEnabled(marker))
             return;
@@ -797,6 +850,7 @@ public class LoggerWrapper implements Logger {
     /**
      * Delegate to the appropriate method of the underlying logger.
      */
+    @Override
     public void error(Marker marker, String format, Object arg1, Object arg2) {
         if (!logger.isErrorEnabled(marker))
             return;
@@ -811,6 +865,7 @@ public class LoggerWrapper implements Logger {
     /**
      * Delegate to the appropriate method of the underlying logger.
      */
+    @Override
     public void error(Marker marker, String format, Object... args) {
         if (!logger.isErrorEnabled(marker))
             return;
@@ -825,6 +880,7 @@ public class LoggerWrapper implements Logger {
     /**
      * Delegate to the appropriate method of the underlying logger.
      */
+    @Override
     public void error(Marker marker, String msg, Throwable t) {
         if (!logger.isErrorEnabled(marker))
             return;
@@ -838,6 +894,7 @@ public class LoggerWrapper implements Logger {
     /**
      * Delegate to the appropriate method of the underlying logger.
      */
+    @Override
     public String getName() {
         return logger.getName();
     }

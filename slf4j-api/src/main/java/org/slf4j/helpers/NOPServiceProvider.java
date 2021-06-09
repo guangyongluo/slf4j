@@ -12,24 +12,29 @@ public class NOPServiceProvider implements SLF4JServiceProvider {
 	 * against. The value of this field is modified with each major release.
 	 */
 	// to avoid constant folding by the compiler, this field must *not* be final
-	public static String REQUESTED_API_VERSION = "1.8.99"; // !final
+	public static String REQUESTED_API_VERSION = "1.8.99";
+	// !final
 
 	private ILoggerFactory loggerFactory = new NOPLoggerFactory();
 	private IMarkerFactory markerFactory =  new BasicMarkerFactory();
 	private MDCAdapter mdcAdapter =  new NOPMDCAdapter();
 
+	@Override
 	public ILoggerFactory getLoggerFactory() {
 		return loggerFactory;
 	}
 
+	@Override
 	public IMarkerFactory getMarkerFactory() {
 		return markerFactory;
 	}
 
+	@Override
 	public MDCAdapter getMDCAdapter() {
 		return mdcAdapter;
 	}
 
+	@Override
 	public String getRequesteApiVersion() {
 		return REQUESTED_API_VERSION;
 	}

@@ -17,10 +17,11 @@ public class SubstituteLoggingEvent implements LoggingEvent {
     String message;
     Object[] argArray;
     List<KeyValuePair> keyValuePairList;
-    
+
     long timeStamp;
     Throwable throwable;
 
+    @Override
     public Level getLevel() {
         return level;
     }
@@ -29,21 +30,24 @@ public class SubstituteLoggingEvent implements LoggingEvent {
         this.level = level;
     }
 
+    @Override
     public List<Marker> getMarkers() {
-		return markers;
+        return markers;
     }
 
     public void addMarker(Marker marker) {
-    	if(marker == null)
-    		return;
-    	
-    	if(markers == null) {
-			markers = new ArrayList<>(2);
-		}
-    	
-    	markers.add(marker);
+        if(marker == null) {
+            return;
+        }
+
+        if(markers == null) {
+            markers = new ArrayList<>(2);
+        }
+
+        markers.add(marker);
     }
 
+    @Override
     public String getLoggerName() {
         return loggerName;
     }
@@ -60,6 +64,7 @@ public class SubstituteLoggingEvent implements LoggingEvent {
         this.logger = logger;
     }
 
+    @Override
     public String getMessage() {
         return message;
     }
@@ -68,6 +73,7 @@ public class SubstituteLoggingEvent implements LoggingEvent {
         this.message = message;
     }
 
+    @Override
     public Object[] getArgumentArray() {
         return argArray;
     }
@@ -76,14 +82,15 @@ public class SubstituteLoggingEvent implements LoggingEvent {
         this.argArray = argArray;
     }
 
-	@Override
-	public List<Object> getArguments() {
-		if(argArray == null) {
-			return null;
-		}
-		return Arrays.asList(argArray);
-	}
-	
+    @Override
+    public List<Object> getArguments() {
+        if(argArray == null) {
+            return null;
+        }
+        return Arrays.asList(argArray);
+    }
+
+    @Override
     public long getTimeStamp() {
         return timeStamp;
     }
@@ -92,6 +99,7 @@ public class SubstituteLoggingEvent implements LoggingEvent {
         this.timeStamp = timeStamp;
     }
 
+    @Override
     public String getThreadName() {
         return threadName;
     }
@@ -100,6 +108,7 @@ public class SubstituteLoggingEvent implements LoggingEvent {
         this.threadName = threadName;
     }
 
+    @Override
     public Throwable getThrowable() {
         return throwable;
     }
@@ -109,8 +118,8 @@ public class SubstituteLoggingEvent implements LoggingEvent {
     }
 
 
-	@Override
-	public List<KeyValuePair> getKeyValuePairs() {
-		return keyValuePairList;
-	}
+    @Override
+    public List<KeyValuePair> getKeyValuePairs() {
+        return keyValuePairList;
+    }
 }

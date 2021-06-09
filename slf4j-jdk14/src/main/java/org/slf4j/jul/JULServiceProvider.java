@@ -20,22 +20,27 @@ public class JULServiceProvider implements SLF4JServiceProvider {
 	private IMarkerFactory markerFactory;
 	private MDCAdapter mdcAdapter;
 
+	@Override
 	public ILoggerFactory getLoggerFactory() {
 		return loggerFactory;
 	}
 
-	public IMarkerFactory getMarkerFactory() {
+	@Override
+    public IMarkerFactory getMarkerFactory() {
 		return markerFactory;
 	}
 
+	@Override
 	public MDCAdapter getMDCAdapter() {
 		return mdcAdapter;
 	}
 
+	@Override
 	public String getRequesteApiVersion() {
 		return REQUESTED_API_VERSION;
 	}
 
+	@Override
 	public void initialize() {
 		loggerFactory = new JDK14LoggerFactory();
 		markerFactory = new BasicMarkerFactory();

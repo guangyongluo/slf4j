@@ -5,8 +5,8 @@ import org.slf4j.IMarkerFactory;
 import org.slf4j.LoggerFactory;
 
 /**
- * This interface based on {@link java.util.ServiceLoader} paradigm. 
- * 
+ * This interface based on {@link java.util.ServiceLoader} paradigm.
+ *
  * <p>It replaces the old static-binding mechanism used in SLF4J versions 1.0.x to 1.7.x.
  *
  * @author Ceki G&uml;lc&uml;
@@ -14,39 +14,38 @@ import org.slf4j.LoggerFactory;
  */
 public interface SLF4JServiceProvider {
 
-    
+
     /**
-     * Return the instance of {@link ILoggerFactory} that 
+     * Return the instance of {@link ILoggerFactory} that
      * {@link org.slf4j.LoggerFactory} class should bind to.
-     * 
-     * @return instance of {@link ILoggerFactory} 
+     *
+     * @return instance of {@link ILoggerFactory}
      */
-    public ILoggerFactory getLoggerFactory();
-    
+    ILoggerFactory getLoggerFactory();
+
     /**
-     * Return the instance of {@link IMarkerFactory} that 
+     * Return the instance of {@link IMarkerFactory} that
      * {@link org.slf4j.MarkerFactory} class should bind to.
-     * 
-     * @return instance of {@link IMarkerFactory} 
+     *
+     * @return instance of {@link IMarkerFactory}
      */
-    public IMarkerFactory getMarkerFactory();
-    
+    IMarkerFactory getMarkerFactory();
+
     /**
      * Return the instnace of {@link MDCAdapter} that
-     * {@link MDC} should bind to.
-     * 
-     * @return instance of {@link MDCAdapter} 
+     * {@link MDCAdapter} should bind to.
+     *
+     * @return instance of {@link MDCAdapter}
      */
-    public MDCAdapter getMDCAdapter();
-    
-    public String getRequesteApiVersion();
-    
+    MDCAdapter getMDCAdapter();
+
+    String getRequesteApiVersion();
+
     /**
      * Initialize the logging back-end.
-     * 
-     * <p><b>WARNING:</b> This method is intended to be called once by 
-     * {@link LoggerFactory} class and from nowhere else. 
-     * 
+     *
+     * <p><b>WARNING:</b> This method is intended to be called once by
+     * {@link LoggerFactory} class and from nowhere else.
      */
-    public void initialize();
+    void initialize();
 }

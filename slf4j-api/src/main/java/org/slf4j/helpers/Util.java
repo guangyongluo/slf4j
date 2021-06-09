@@ -1,7 +1,7 @@
 /**
  * Copyright (c) 2004-2011 QOS.ch
  * All rights reserved.
- *
+ * <p>
  * Permission is hereby granted, free  of charge, to any person obtaining
  * a  copy  of this  software  and  associated  documentation files  (the
  * "Software"), to  deal in  the Software without  restriction, including
@@ -9,10 +9,10 @@
  * distribute,  sublicense, and/or sell  copies of  the Software,  and to
  * permit persons to whom the Software  is furnished to do so, subject to
  * the following conditions:
- *
+ * <p>
  * The  above  copyright  notice  and  this permission  notice  shall  be
  * included in all copies or substantial portions of the Software.
- *
+ * <p>
  * THE  SOFTWARE IS  PROVIDED  "AS  IS", WITHOUT  WARRANTY  OF ANY  KIND,
  * EXPRESS OR  IMPLIED, INCLUDING  BUT NOT LIMITED  TO THE  WARRANTIES OF
  * MERCHANTABILITY,    FITNESS    FOR    A   PARTICULAR    PURPOSE    AND
@@ -20,7 +20,6 @@
  * LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
  * OF CONTRACT, TORT OR OTHERWISE,  ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- *
  */
 package org.slf4j.helpers;
 
@@ -32,12 +31,12 @@ package org.slf4j.helpers;
  */
 public final class Util {
 
-	
+
     private Util() {
     }
 
     public static String safeGetSystemProperty(String key) {
-        if (key == null)
+        if(key == null)
             throw new IllegalArgumentException("null input");
 
         String result = null;
@@ -51,10 +50,11 @@ public final class Util {
 
     public static boolean safeGetBooleanSystemProperty(String key) {
         String value = safeGetSystemProperty(key);
-        if (value == null)
+        if(value == null) {
             return false;
-        else
+        } else {
             return value.equalsIgnoreCase("true");
+        }
     }
 
     /**
@@ -63,6 +63,7 @@ public final class Util {
      * inside this package.
      */
     private static final class ClassContextSecurityManager extends SecurityManager {
+        @Override
         protected Class<?>[] getClassContext() {
             return super.getClassContext();
         }
@@ -72,11 +73,11 @@ public final class Util {
     private static boolean SECURITY_MANAGER_CREATION_ALREADY_ATTEMPTED = false;
 
     private static ClassContextSecurityManager getSecurityManager() {
-        if (SECURITY_MANAGER != null)
+        if(SECURITY_MANAGER != null) {
             return SECURITY_MANAGER;
-        else if (SECURITY_MANAGER_CREATION_ALREADY_ATTEMPTED)
+        } else if(SECURITY_MANAGER_CREATION_ALREADY_ATTEMPTED) {
             return null;
-        else {
+        } else {
             SECURITY_MANAGER = safeCreateSecurityManager();
             SECURITY_MANAGER_CREATION_ALREADY_ATTEMPTED = true;
             return SECURITY_MANAGER;
@@ -98,20 +99,22 @@ public final class Util {
      */
     public static Class<?> getCallingClass() {
         ClassContextSecurityManager securityManager = getSecurityManager();
-        if (securityManager == null)
+        if(securityManager == null) {
             return null;
+        }
         Class<?>[] trace = securityManager.getClassContext();
         String thisClassName = Util.class.getName();
 
         // Advance until Util is found
         int i;
-        for (i = 0; i < trace.length; i++) {
-            if (thisClassName.equals(trace[i].getName()))
+        for(i = 0; i < trace.length; i++) {
+            if(thisClassName.equals(trace[i].getName())) {
                 break;
+            }
         }
 
         // trace[i] = Util; trace[i+1] = caller; trace[i+2] = caller's caller
-        if (i >= trace.length || i + 2 >= trace.length) {
+        if(i >= trace.length || i + 2 >= trace.length) {
             throw new IllegalStateException("Failed to find org.slf4j.helpers.Util or its caller in the stack; " + "this should not happen");
         }
 

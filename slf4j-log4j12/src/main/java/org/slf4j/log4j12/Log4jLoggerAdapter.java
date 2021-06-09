@@ -97,6 +97,7 @@ public final class Log4jLoggerAdapter extends LegacyAbstractLogger implements Lo
      * 
      * @return True if this Logger is enabled for level TRACE, false otherwise.
      */
+    @Override
     public boolean isTraceEnabled() {
         if (traceCapable) {
             return logger.isTraceEnabled();
@@ -110,6 +111,7 @@ public final class Log4jLoggerAdapter extends LegacyAbstractLogger implements Lo
      * 
      * @return True if this Logger is enabled for level DEBUG, false otherwise.
      */
+    @Override
     public boolean isDebugEnabled() {
         return logger.isDebugEnabled();
     }
@@ -120,6 +122,7 @@ public final class Log4jLoggerAdapter extends LegacyAbstractLogger implements Lo
      * 
      * @return True if this Logger is enabled for the INFO level, false otherwise.
      */
+    @Override
     public boolean isInfoEnabled() {
         return logger.isInfoEnabled();
     }
@@ -129,6 +132,7 @@ public final class Log4jLoggerAdapter extends LegacyAbstractLogger implements Lo
      * 
      * @return True if this Logger is enabled for the WARN level, false otherwise.
      */
+    @Override
     public boolean isWarnEnabled() {
         return logger.isEnabledFor(Level.WARN);
     }
@@ -139,6 +143,7 @@ public final class Log4jLoggerAdapter extends LegacyAbstractLogger implements Lo
      * 
      * @return True if this Logger is enabled for level ERROR, false otherwise.
      */
+    @Override
     public boolean isErrorEnabled() {
         return logger.isEnabledFor(Level.ERROR);
     }
